@@ -39,6 +39,10 @@ public class PostEntity {
         return id;
     }
 
+    public UserEntity getUser() {
+        return user;
+    }
+
     public String getTitle() {
         return title;
     }
