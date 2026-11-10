@@ -1,3 +1,49 @@
 spring:
   application:
     name: user-content-service
+  mvc:
+    problemdetails:
+      enabled: true
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+  sql:
+    init:
+      mode: always
+
+app:
+  external:
+    base-url: https://jsonplaceholder.typicode.com
+    connect-timeout: 2s
+    read-timeout: 3s
+  cache:
+    ttl: 5m
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      jsonplaceholder:
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 3
+        ignore-exceptions:
+          - com.usercontent.domain.exception.UserNotFoundException
+  timelimiter:
+    instances:
+      jsonplaceholder:
+        timeout-duration: 3s
+        cancel-running-future: true
+
+logging:
+  level:
+    com.usercontent: INFO
