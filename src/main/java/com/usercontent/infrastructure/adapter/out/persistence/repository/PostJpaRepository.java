@@ -6,7 +6,11 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface PostJpaRepository extends JpaRepository<PostEntity, Long> {
+
+    List<PostEntity> findByUser_IdOrderByIdAsc(Long userId);
 
     @Modifying(flushAutomatically = true, clearAutomatically = true)
     @Query("delete from PostEntity p where p.user.id = :userId")

@@ -38,4 +38,24 @@ public class CommentEntity {
         this.email = email;
         this.body = body;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public PostEntity getPost() {
+        return post;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getBody() {
+        return body;
+    }
 }

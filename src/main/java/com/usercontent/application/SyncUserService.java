@@ -10,6 +10,7 @@ import com.usercontent.domain.port.out.ExternalContentPort;
 import com.usercontent.domain.port.out.UserRepositoryPort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -30,6 +31,7 @@ public class SyncUserService implements SyncUserUseCase {
     }
 
     @Override
+    @CacheEvict(cacheNames = {"userSummary", "topPosts"}, allEntries = true)
     public UserAggregate sync(long userId) {
         long start = System.nanoTime();
         log.info("Sync started userId={}", userId);
