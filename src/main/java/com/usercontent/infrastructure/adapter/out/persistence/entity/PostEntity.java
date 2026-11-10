@@ -34,4 +34,16 @@ public class PostEntity {
         this.title = title;
         this.body = body;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getBody() {
+        return body;
+    }
 }

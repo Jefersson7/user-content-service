@@ -30,4 +30,20 @@ public class UserEntity {
         this.username = username;
         this.email = email;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
