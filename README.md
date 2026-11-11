@@ -66,6 +66,8 @@ Si Maven no está usando JDK 25, apunta `JAVA_HOME` a esa versión.
 | Usuario | `sa` |
 | Password | vacío |
 
+La base inicia vacía. Ejecuta `POST /api/sync/{userId}` para poblarla antes de consultar `summary` o `top posts`.
+
 ### Consola H2
 
 ```
@@ -134,7 +136,7 @@ El paquete `domain` no importa Spring, JPA ni Jackson. Las dependencias apuntan 
 ./mvnw verify
 ```
 
-11 pruebas unitarias cubren los casos de uso, el cliente externo y el contexto de la aplicación.
+11 pruebas automatizadas: 10 unitarias de los casos de uso y el cliente, y 1 de contexto de la aplicación.
 
 ## Cobertura de requisitos
 
@@ -150,4 +152,4 @@ El paquete `domain` no importa Spring, JPA ni Jackson. Las dependencias apuntan 
 | Timeout | Timeouts del cliente HTTP y TimeLimiter de Resilience4j |
 | Caché con TTL configurable | Caffeine con `app.cache.ttl` y evicción al sincronizar |
 | Logs | Inicio, fin y fallo del sync con id de usuario, conteos y duración |
-| Pruebas unitarias | 11 pruebas con JUnit 5 y Mockito |
+| Pruebas unitarias | 10 unitarias + 1 de contexto con JUnit 5 y Mockito |
